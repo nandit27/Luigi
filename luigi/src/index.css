@@ -103,3 +103,16 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #444;
 }
+
+/* Add these styles for consistent hover effects */
+.nav-link {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent text selection */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}

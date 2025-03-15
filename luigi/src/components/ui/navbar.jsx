@@ -41,22 +41,20 @@ export function Navbar() {
                 to={item.path}
                 className={({ isActive }) => `
                   relative text-[14px] font-medium tracking-[1px] uppercase 
-                  transition-all duration-300 hover:text-[#ff5900] group px-6
-                  ${isActive ? 'text-[#ff5900]' : 'text-white'}
+                  transition-all duration-300 px-6 select-none
+                  ${isActive ? 'text-[#ff5900]' : 'text-white hover:text-[#ff5900]'}
+                  before:content-[''] before:absolute before:bottom-0 before:left-0 
+                  before:w-full before:h-[1px] before:bg-[#ff5900] before:scale-x-0 
+                  before:origin-right before:transition-transform before:duration-300
+                  hover:before:scale-x-100 hover:before:origin-left
+                  after:content-[''] after:absolute after:inset-0 after:z-10
+                  after:bg-white/0 hover:after:bg-white/5 after:rounded-md
+                  after:transition-colors after:duration-300
                 `}
               >
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: index * 0.1 }}
-                >
+                <span className="relative z-10">
                   {item.label}
-                </motion.span>
-                <motion.div 
-                  className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#ff5900] group-hover:w-full transition-all duration-300"
-                  whileHover={{ width: "100%" }}
-                />
-                <div className="absolute -inset-x-2 -inset-y-2 bg-white/0 group-hover:bg-white/5 rounded-md transition-all duration-300" />
+                </span>
               </NavLink>
             ))}
           </div>
