@@ -1,11 +1,30 @@
+import CountUp from 'react-countup';
+
 const StatsCard = ({ value, label }) => {
+  // Extract the numeric value and any suffix (like +, K, etc.)
+  const numericValue = parseFloat(value.replace(/[^0-9.]/g, ''));
+  const suffix = value.replace(/[0-9.]/g, '');
+
   return (
-    <article className="flex flex-col flex-1 items-center max-w-[150px] min-w-[150px] max-sm:min-w-[120px]">
-      <h3 className="text-5xl font-bold text-white leading-[81.6px] max-sm:text-4xl max-sm:leading-[60px]">
-        {value}
-      </h3>
-      <p className="text-xl leading-8 text-white">{label}</p>
-    </article>
+    <div className="flex flex-col items-center justify-center w-[220px] h-[180px] p-4 
+      bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 
+      hover:border-[#FF8142]/30 hover:shadow-lg hover:shadow-[#FF8142]/10 
+      transition-all duration-300 transform hover:scale-105">
+      <div className="text-4xl font-bold mb-2 text-[#FF8142]">
+        <CountUp
+          end={numericValue}
+          duration={2.5}
+          separator=","
+          decimals={value.includes('.') ? 1 : 0}
+          suffix={suffix}
+          enableScrollSpy
+          scrollSpyOnce
+        />
+      </div>
+      <div className="text-xl font-medium text-white capitalize">
+        {label}
+      </div>
+    </div>
   );
 };
 

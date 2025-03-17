@@ -23,6 +23,9 @@ module.exports = {
         'height': 'height',
         'spacing': 'margin, padding',
       },
+      backdropBlur: {
+        xs: '2px',
+      },
     },
   },
   plugins: [],
