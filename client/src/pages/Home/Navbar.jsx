@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const navItems = ["HOME", "MODELS", "DATASETS", "ABOUT", "FAQ"];
+  const navItems = [
+    { name: "HOME", href: "/home" },
+    { name: "MODELS", href: "/models" },
+    { name: "DATASETS", href: "/datasets" },
+    { name: "ABOUT", href: "#about" },
+    { name: "FAQ", href: "#faq" },
+  ];
 
   // Handle navbar background change on scroll
   useEffect(() => {
@@ -16,9 +23,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-[#171717]/95 backdrop-blur-sm py-4' : 'bg-transparent py-6'
-    }`}>
+    <header className={`fixed w-full z-50 transition-all duration-300 bg-[#171717]/95 backdrop-blur-sm py-4`}>
       <nav className="max-w-[1140px] mx-auto px-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
@@ -32,17 +37,27 @@ const Navbar = () => {
             </span>
           </div>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="relative text-white font-semibold text-lg tracking-wider hover:text-[#FF8142] transition-colors duration-300 group"
-              >
-                {item}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8142] transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              item.href.startsWith("#") ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="relative text-white font-semibold text-lg tracking-wider hover:text-[#FF8142] transition-colors duration-300 group"
+                >
+                  {item.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8142] transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="relative text-white font-semibold text-lg tracking-wider hover:text-[#FF8142] transition-colors duration-300 group"
+                >
+                  {item.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8142] transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+              )
             ))}
             <button className="px-6 py-2 bg-gradient-to-r from-[#FF8142] to-[#FF9061] text-white font-semibold rounded-lg 
               hover:from-[#FF9061] hover:to-[#FF8142] transform hover:scale-105 transition-all duration-300
@@ -75,13 +90,23 @@ const Navbar = () => {
         }`}>
           <div className="bg-[#171717]/95 backdrop-blur-md rounded-lg p-4 space-y-4">
             {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="block text-white font-semibold py-2 px-4 hover:bg-[#FF8142]/10 rounded-lg transition-colors duration-300"
-              >
-                {item}
-              </a>
+              item.href.startsWith("#") ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="block text-white font-semibold py-2 px-4 hover:bg-[#FF8142]/10 rounded-lg transition-colors duration-300"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="block text-white font-semibold py-2 px-4 hover:bg-[#FF8142]/10 rounded-lg transition-colors duration-300"
+                >
+                  {item.name}
+                </Link>
+              )
             ))}
             <button className="w-full px-6 py-2 bg-gradient-to-r from-[#FF8142] to-[#FF9061] text-white font-semibold rounded-lg 
               hover:from-[#FF9061] hover:to-[#FF8142] transform hover:scale-105 transition-all duration-300

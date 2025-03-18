@@ -1,22 +1,22 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import HeroSection from "./components/HeroSection";
-import AboutSection from "./components/AboutSection";
-import FeaturesSection from "./components/FeaturesSection";
-import FAQSection from "./components/FAQSection";
-import Footer from "./components/Footer";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "./pages/Home/Navbar";
+import Home from "./pages/Home/Home";
+import Models from "./pages/Models/Models";
+import Datasets from "./pages/Datasets/Datasets";
 
-const LandingPage = () => {
+const App = () => {
   return (
-    <main className="overflow-hidden w-full bg-[#171717]">
+    <Router>
       <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <FeaturesSection />
-      <FAQSection />
-      <Footer />
-    </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/models" element={<Models />} />
+        <Route path="/datasets" element={<Datasets />} />
+      </Routes>
+    </Router>
   );
 };
 
-export default LandingPage;
+export default App;
