@@ -1,6 +1,6 @@
 const HeroSection = () => {
   return (
-    <section className="mt-28 flex flex-col items-center pt-10 bg-[url('images\\bg-image.png')] bg-cover bg-center text-white relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-[#171717]/70 before:z-0">
+    <section className="mt-28 flex flex-col items-center pt-10 bg-[url('images/bg-image.png')] bg-cover bg-center text-white relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-[#171717]/70 before:z-0">
       <div className="relative z-10 h-[153px] w-[1096px] max-md:px-5 max-md:py-0 max-md:w-full">
         <div className="text-9xl font-bold text-white uppercase text-center tracking-[10px] animate-fadeIn">
           <span className="hover:scale-110 inline-block transition-transform duration-300">L</span>
@@ -21,7 +21,7 @@ const HeroSection = () => {
       </div>
       <div className="relative z-10 w-full max-md:h-auto flex justify-center animate-fadeIn">
         <img
-          src="images\\hero.png"
+          src="images/hero.png"
           alt="Hero"
           className="w-full max-w-[1500px] h-auto object-contain hover:scale-105 transition-transform duration-500"
         />

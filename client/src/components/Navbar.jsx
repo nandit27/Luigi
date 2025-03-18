@@ -21,10 +21,9 @@ const Navbar = () => {
     }`}>
       <nav className="max-w-[1140px] mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Logo Section */}
           <div className="flex items-center">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/aaf39f326dac61e47f6251305cc3868b0b3f531a"
+              src="images/logo.png"
               alt="Logo"
               className="h-[60px] w-[60px] hover:scale-105 transition-transform duration-300"
             />

@@ -128,7 +128,7 @@ const AboutSection = () => {
           transition={{ duration: 0.6 }}
         >
           <img
-            src="images\\landingtwo.png"
+            src="images/landingtwo.png"
             alt="About section image"
             className="w-full h-auto mb-8 lg:mb-0 rounded-lg shadow-2xl 
               transform hover:scale-105 transition-transform duration-500
