@@ -6,7 +6,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const navItems = [
-    { name: "HOME", href: "/home" },
+    { name: "HOME", href: "/" },
     { name: "MODELS", href: "/models" },
     { name: "DATASETS", href: "/datasets" },
     { name: "ABOUT", href: "#about" },
