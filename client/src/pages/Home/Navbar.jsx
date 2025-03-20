@@ -1,16 +1,39 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleSectionClick = (sectionId) => {
+    if (location.pathname !== '/') {
+      // If we're not on the home page, navigate to home first
+      navigate('/', { state: { scrollTo: sectionId } });
+    } else {
+      // If we're already on the home page, just scroll to the section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   const navItems = [
     { name: "HOME", href: "/" },
     { name: "MODELS", href: "/models" },
     { name: "DATASETS", href: "/datasets" },
-    { name: "ABOUT", href: "#about" },
-    { name: "FAQ", href: "#faq" },
+    { 
+      name: "ABOUT", 
+      href: "#about",
+      onClick: () => handleSectionClick('about')
+    },
+    { 
+      name: "FAQ", 
+      href: "#faq",
+      onClick: () => handleSectionClick('faq')
+    },
   ];
 
   // Handle navbar background change on scroll
@@ -21,6 +44,20 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Handle scroll to section when navigating from another page
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const element = document.getElementById(location.state.scrollTo);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100); // Small delay to ensure the page is loaded
+      }
+      // Clear the state after scrolling
+      window.history.replaceState({}, document.title);
+    }
+  }, [location]);
 
   return (
     <header className={`fixed w-full z-50 transition-all duration-300 bg-[#171717]/95 backdrop-blur-sm py-4`}>
@@ -39,25 +76,24 @@ const Navbar = () => {
 
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              item.href.startsWith("#") ? (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="relative text-white font-semibold text-lg tracking-wider hover:text-[#FF8142] transition-colors duration-300 group"
-                >
-                  {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8142] transition-all duration-300 group-hover:w-full"></span>
-                </a>
-              ) : (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="relative text-white font-semibold text-lg tracking-wider hover:text-[#FF8142] transition-colors duration-300 group"
-                >
-                  {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FF8142] transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-              )
+              <div
+                key={item.name}
+                onClick={item.onClick}
+                className="cursor-pointer"
+              >
+                {item.onClick ? (
+                  <span className="text-gray-300 hover:text-[#FF8142] transition-colors duration-300">
+                    {item.name}
+                  </span>
+                ) : (
+                  <Link
+                    to={item.href}
+                    className="text-gray-300 hover:text-[#FF8142] transition-colors duration-300"
+                  >
+                    {item.name}
+                  </Link>
+                )}
+              </div>
             ))}
             <button className="px-6 py-2 bg-gradient-to-r from-[#FF8142] to-[#FF9061] text-white font-semibold rounded-lg 
               hover:from-[#FF9061] hover:to-[#FF8142] transform hover:scale-105 transition-all duration-300
@@ -90,23 +126,28 @@ const Navbar = () => {
         }`}>
           <div className="bg-[#171717]/95 backdrop-blur-md rounded-lg p-4 space-y-4">
             {navItems.map((item) => (
-              item.href.startsWith("#") ? (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="block text-white font-semibold py-2 px-4 hover:bg-[#FF8142]/10 rounded-lg transition-colors duration-300"
-                >
-                  {item.name}
-                </a>
-              ) : (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="block text-white font-semibold py-2 px-4 hover:bg-[#FF8142]/10 rounded-lg transition-colors duration-300"
-                >
-                  {item.name}
-                </Link>
-              )
+              <div
+                key={item.name}
+                onClick={() => {
+                  item.onClick?.();
+                  setIsMobileMenuOpen(false);
+                }}
+                className="py-2"
+              >
+                {item.onClick ? (
+                  <span className="text-gray-300 hover:text-[#FF8142] transition-colors duration-300">
+                    {item.name}
+                  </span>
+                ) : (
+                  <Link
+                    to={item.href}
+                    className="text-gray-300 hover:text-[#FF8142] transition-colors duration-300"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                )}
+              </div>
             ))}
             <button className="w-full px-6 py-2 bg-gradient-to-r from-[#FF8142] to-[#FF9061] text-white font-semibold rounded-lg 
               hover:from-[#FF9061] hover:to-[#FF8142] transform hover:scale-105 transition-all duration-300
