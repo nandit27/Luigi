@@ -1,0 +1,173 @@
+[
+    {
+      "title": "GPT-4 Turbo",
+      "description": "Latest language model with enhanced capabilities and improved performance",
+      "image": "/images/modelImage1.jpg",
+      "downloads": "1.2M",
+      "rating": 4.9,
+      "category": "NLP",
+      "author": "OpenAI"
+    },
+    {
+      "title": "BERT",
+      "description": "Bidirectional Encoder Representations from Transformers",
+      "image": "/images/modelImage2.jpg",
+      "downloads": "1M",
+      "rating": 4.9,
+      "category": "NLP",
+      "author": "Google"
+    },
+    {
+      "title": "T5",
+      "description": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+      "image": "/images/modelImage3.jpg",
+      "downloads": "1M",
+      "rating": 4.9,
+      "category": "NLP",
+      "author": "Google"
+    },
+    {
+      "title": "GPT-3",
+      "description": "Language Models are Few-Shot Learners",
+      "image": "/images/modelImage4.jpg",
+      "downloads": "1.5M",
+      "rating": 4.9,
+      "category": "NLP",
+      "author": "OpenAI"
+    },
+    {
+      "title": "ResNet-50",
+      "description": "Deep residual network for image classification",
+      "image": "/images/modelImage5.jpg",
+      "downloads": "800K",
+      "rating": 4.8,
+      "category": "Computer Vision",
+      "author": "Microsoft"
+    },
+    {
+      "title": "YOLOv5",
+      "description": "You Only Look Once: Real-time object detection",
+      "image": "/images/modelImage1.jpg",
+      "downloads": "700K",
+      "rating": 4.8,
+      "category": "Computer Vision",
+      "author": "Ultralytics"
+    },
+    {
+      "title": "EfficientNet",
+      "description": "EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks",
+      "image": "/images/modelImage2.jpg",
+      "downloads": "600K",
+      "rating": 4.8,
+      "category": "Computer Vision",
+      "author": "Google"
+    },
+    {
+      "title": "StyleGAN2",
+      "description": "A Style-Based Generator Architecture for Generative Adversarial Networks",
+      "image": "/images/modelImage3.jpg",
+      "downloads": "300K",
+      "rating": 4.6,
+      "category": "Computer Vision",
+      "author": "NVIDIA"
+    },
+    {
+      "title": "WaveNet",
+      "description": "Deep generative model for raw audio waveforms",
+      "image": "/images/modelImage4.jpg",
+      "downloads": "500K",
+      "rating": 4.7,
+      "category": "Audio",
+      "author": "DeepMind"
+    },
+    {
+      "title": "Tacotron 2",
+      "description": "Natural TTS synthesis by conditioning Wavenet on mel spectrogram predictions",
+      "image": "/images/modelImage5.jpg",
+      "downloads": "400K",
+      "rating": 4.7,
+      "category": "Audio",
+      "author": "Google"
+    },
+    {
+      "title": "BigGAN",
+      "description": "Large Scale GAN Training for High Fidelity Natural Image Synthesis",
+      "image": "/images/modelImage1.jpg",
+      "downloads": "400K",
+      "rating": 4.7,
+      "category": "Audio",
+      "author": "DeepMind"
+    },
+    {
+      "title": "OpenAI CLIP",
+      "description": "Learning Transferable Visual Models From Natural Language Supervision",
+      "image": "/images/modelImage2.jpg",
+      "downloads": "1M",
+      "rating": 4.9,
+      "category": "Audio",
+      "author": "OpenAI"
+    },
+    {
+      "title": "DQN",
+      "description": "Deep Q-Network for reinforcement learning",
+      "image": "/images/modelImage3.jpg",
+      "downloads": "300K",
+      "rating": 4.6,
+      "category": "Reinforcement Learning",
+      "author": "Google"
+    },
+    {
+      "title": "AlphaZero",
+      "description": "General reinforcement learning algorithm",
+      "image": "/images/modelImage4.jpg",
+      "downloads": "200K",
+      "rating": 4.6,
+      "category": "Reinforcement Learning",
+      "author": "DeepMind"
+    },
+    {
+      "title": "GPT-2",
+      "description": "Language Models are Unsupervised Multitask Learners",
+      "image": "/images/modelImage5.jpg",
+      "downloads": "1.3M",
+      "rating": 4.9,
+      "category": "Reinforcement Learning",
+      "author": "OpenAI"
+    },
+    {
+      "title": "NASNet",
+      "description": "Learning Transferable Architectures for Scalable Image Recognition",
+      "image": "/images/modelImage1.jpg",
+      "downloads": "400K",
+      "rating": 4.6,
+      "category": "Reinforcement Learning",
+      "author": "Google"
+    },
+    {
+        "title": "InceptionV3",
+        "description": "Rethinking the Inception Architecture for Computer Vision",
+        "image": "/images/modelImage2.jpg",
+        "downloads": "900K",
+        "rating": 4.8,
+        "category": "Computer Vision",
+        "author": "Google"
+      },
+      {
+        "title": "DeepSpeech",
+        "description": "End-to-end deep learning for speech recognition",
+        "image": "/images/modelImage1.jpg",
+        "downloads": "600K",
+        "rating": 4.7,
+        "category": "Audio",
+        "author": "Mozilla"
+      },
+      {
+        "title": "VGGish",
+        "description": "A VGG-like audio classification model",
+        "image": "/images/modelImage3.jpg",
+        "downloads": "500K",
+        "rating": 4.6,
+        "category": "Audio",
+        "author": "Google"
+      }
+  ]

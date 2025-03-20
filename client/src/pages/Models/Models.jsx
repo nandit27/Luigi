@@ -1,24 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import  ModelCard  from '../Models/ModelCard'
+import ModelCard from '../Models/ModelCard';
+import Footer from "../Home/Footer";
+import modelsData from './modelsData.json';
 
 const Models = () => {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [filteredModels, setFilteredModels] = useState(modelsData);
 
-  const categories = ["All", "Computer Vision", "NLP", "Audio", "Reinforcement Learning"];
-  
-  const trendingModels = [
-    {
-      title: "GPT-4 Turbo",
-      description: "Latest language model with enhanced capabilities and improved performance",
-      image: "path_to_image",
-      downloads: "1.2M",
-      rating: 4.9,
-      category: "NLP",
-      author: "OpenAI"
-    },
-    // Add more models...
-  ];
+  const categories = ["All", "Trending Models", "Computer Vision", "NLP", "Audio", "Reinforcement Learning"];
+
+  const parseDownloads = (downloads) => {
+    if (downloads.endsWith('M')) {
+      return parseFloat(downloads) * 1000000;
+    } else if (downloads.endsWith('K')) {
+      return parseFloat(downloads) * 1000;
+    }
+    return parseInt(downloads.replace(/[^0-9]/g, ''));
+  };
+
+  useEffect(() => {
+    if (activeCategory === "All") {
+      setFilteredModels(modelsData);
+    } else if (activeCategory === "Trending Models") {
+      setFilteredModels(modelsData.filter(model => parseDownloads(model.downloads) >= 1000000));
+    } else {
+      setFilteredModels(modelsData.filter(model => model.category === activeCategory));
+    }
+  }, [activeCategory]);
 
   return (
     <div className="min-h-screen bg-[#171717] pt-[80px]">
@@ -79,17 +88,11 @@ const Models = () => {
         </div>
       </section>
 
-      {/* Trending Models */}
+      {/* All Models */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl font-bold text-white">Trending Models</h2>
-          <button className="text-[#FF8142] hover:text-white transition-colors duration-300">
-            View All →
-          </button>
-        </div>
-
+        <h2 className="text-3xl font-bold text-white mb-8">{activeCategory} Models</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {trendingModels.map((model, index) => (
+          {filteredModels.map((model, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -101,29 +104,7 @@ const Models = () => {
           ))}
         </div>
       </section>
-
-      {/* Featured Categories */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h2 className="text-3xl font-bold text-white mb-8">Featured Categories</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categories.slice(1).map((category, index) => (
-            <motion.div
-              key={category}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white/5 rounded-xl p-6 hover:bg-white/10 
-                transition-all duration-300 cursor-pointer group"
-            >
-              <h3 className="text-xl font-semibold text-white mb-2">{category}</h3>
-              <p className="text-gray-400 mb-4">Explore the latest {category} models</p>
-              <span className="text-[#FF8142] group-hover:translate-x-2 transition-transform duration-300 inline-block">
-                Browse →
-              </span>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      <Footer />
     </div>
   );
 };
