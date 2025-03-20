@@ -3,11 +3,26 @@ import { motion } from "framer-motion";
 
 const AboutSection = () => {
   const stats = [
-    { value: "10+", label: "countries" },
-    { value: "60+", label: "universities" },
-    { value: "540+", label: "hackers" },
-    { value: "$30K", label: "prizes" },
-    { value: "36", label: "hours" },
+    { 
+      value: "1000+", 
+      label: "Datasets",
+      description: "High-quality datasets available"
+    },
+    { 
+      value: "2.5K+", 
+      label: "Projects",
+      description: "Student projects completed"
+    },
+    { 
+      value: "100+", 
+      label: "Universities",
+      description: "Trust our platform"
+    },
+    { 
+      value: "6", 
+      label: "Categories",
+      description: "Covering major domains"
+    }
   ];
 
   const fadeInUp = {
@@ -18,7 +33,7 @@ const AboutSection = () => {
   };
 
   return (
-    <section className="relative flex flex-col items-center px-4 py-28 text-white bg-[#171717] overflow-hidden">
+    <section id="about" className="relative flex flex-col items-center px-4 py-28 text-white bg-[#171717] overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-20 left-10 w-72 h-72 bg-[#FF8142]/10 rounded-full blur-[100px]" />
         <div className="absolute bottom-20 right-10 w-72 h-72 bg-[#FF8142]/10 rounded-full blur-[100px]" />
@@ -38,104 +53,59 @@ const AboutSection = () => {
 
       <motion.p 
         {...fadeInUp}
-        className="mb-12 text-lg leading-7 text-center max-w-[480px] text-neutral-200 
+        className="mb-12 text-lg leading-7 text-center max-w-[600px] text-neutral-200 
           bg-white/5 p-6 rounded-lg backdrop-blur-sm border border-white/10 
           hover:border-[#FF8142]/30 transition-all duration-300"
       >
-        Our mission is to create "Realistic Impact," which entails encouraging
-        participants to create projects that could be feasibly implemented in
-        real-world scenarios to make tangible change.
+        LUIGI is dedicated to empowering students with high-quality datasets for their academic projects. 
+        Our mission is to make data-driven development accessible and efficient for educational purposes, 
+        helping students create impactful projects that solve real-world problems.
       </motion.p>
 
-      <motion.h3 
-        {...fadeInUp}
-        className="mb-1.5 text-4xl font-semibold leading-10 text-white uppercase 
-          bg-gradient-to-r from-[#FF8142] to-[#FF9061] bg-clip-text text-transparent"
-      >
-        Stats:
-      </motion.h3>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white/5 rounded-xl p-6 text-center group hover:bg-white/10 
+                transition-all duration-300 border border-white/10 hover:border-[#FF8142]/30"
+            >
+              <h3 className="text-3xl font-bold text-[#FF8142] mb-2">{stat.value}</h3>
+              <p className="text-white font-semibold mb-1">{stat.label}</p>
+              <p className="text-gray-400 text-sm">{stat.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
       <motion.div 
         {...fadeInUp}
-        className="flex flex-wrap gap-4 justify-center px-4 py-1.5 mb-12 max-w-[1200px]"
+        className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
       >
-        {stats.map((stat, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3, delay: index * 0.1 }}
-          >
-            <StatsCard value={stat.value} label={stat.label} />
-          </motion.div>
-        ))}
+        <div className="bg-white/5 p-6 rounded-lg border border-white/10 hover:border-[#FF8142]/30 transition-all duration-300">
+          <h3 className="text-xl font-semibold text-[#FF8142] mb-4">For Students</h3>
+          <ul className="space-y-2 text-gray-400">
+            <li>• Access curated datasets for academic projects</li>
+            <li>• Find data across multiple domains</li>
+            <li>• Easy-to-use download and integration</li>
+            <li>• Comprehensive documentation support</li>
+          </ul>
+        </div>
+
+        <div className="bg-white/5 p-6 rounded-lg border border-white/10 hover:border-[#FF8142]/30 transition-all duration-300">
+          <h3 className="text-xl font-semibold text-[#FF8142] mb-4">For Universities</h3>
+          <ul className="space-y-2 text-gray-400">
+            <li>• Support student research projects</li>
+            <li>• Ensure quality data accessibility</li>
+            <li>• Track project outcomes</li>
+            <li>• Foster data-driven learning</li>
+          </ul>
+        </div>
       </motion.div>
-
-      <div className="relative flex flex-col items-center px-4 py-0 max-w-[1140px] lg:flex-row lg:gap-12">
-        <motion.div 
-          className="flex flex-col gap-8 lg:w-1/2"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="text-xl leading-8 text-neutral-200 max-sm:text-base max-sm:leading-6
-            p-6 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 
-            hover:border-[#FF8142]/30 transition-all duration-300">
-            Hacktech is Caltech's 11th premier annual intercollegiate hackathon.
-            During the 36-hour event, participants will collaborate in teams of 1
-            to 4 members to develop projects that align with our themes.
-          </div>
-
-          <div className="text-xl font-bold leading-8 text-white max-sm:text-base max-sm:leading-6
-            p-6 rounded-lg bg-gradient-to-r from-[#FF8142]/10 to-transparent">
-            This year, hackers will have the option to choose from these three
-            tracks for their projects: Healthcare, Finance/Data Analytics, and
-            Sustainability.
-          </div>
-
-          <div className="text-xl leading-8 text-neutral-200 max-sm:text-base max-sm:leading-6
-            space-y-4 p-6 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
-            <div>
-              <span className="font-bold text-[#FF8142]">What's New for 2025? </span>
-              <span>
-                A lot. We revamped the entire event from the ground up, featuring a
-                new format, new venues, and improved dining options!
-              </span>
-            </div>
-            <div>
-              <span className="font-bold text-[#FF8142]">Event format: </span>
-              <span>
-                We're fully in-person this year! Scroll down to the FAQ for location
-                details!
-              </span>
-            </div>
-            <div>
-              <span className="font-bold text-[#FF8142]">Venues and Food: </span>
-              <span>
-                We have double the space as previous years. This year will feature
-                dedicated eating, sleeping, and working areas.
-              </span>
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div 
-          className="lg:w-1/2"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <img
-            src="images/landingtwo.png"
-            alt="About section image"
-            className="w-full h-auto mb-8 lg:mb-0 rounded-lg shadow-2xl 
-              transform hover:scale-105 transition-transform duration-500
-              hover:shadow-[#FF8142]/20"
-          />
-        </motion.div>
-      </div>
     </section>
   );
 };
