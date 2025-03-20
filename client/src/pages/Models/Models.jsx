@@ -48,49 +48,61 @@ const Models = () => {
             <h1 className="text-5xl font-bold text-white mb-6">
               Discover Powerful AI Models
             </h1>
-            <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
               Access thousands of cutting-edge machine learning models, 
               from state-of-the-art LLMs to advanced computer vision solutions.
             </p>
-            <div className="flex gap-4 justify-center">
-              <button className="px-8 py-3 bg-gradient-to-r from-[#FF8142] to-[#FF9061] 
-                text-white rounded-lg hover:from-[#FF9061] hover:to-[#FF8142] 
-                transition-all duration-300 transform hover:scale-105 
-                hover:shadow-[0_0_15px_rgba(255,129,66,0.3)]">
-                Explore Models
-              </button>
-              <button className="px-8 py-3 bg-white/5 text-white rounded-lg
-                hover:bg-white/10 transition-all duration-300 border border-white/10
-                hover:border-[#FF8142]/30">
-                Upload Model
-              </button>
-            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Category Filter */}
+      {/* Search and Filter Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex gap-4 overflow-x-auto pb-4">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-6 py-2 rounded-full transition-all duration-300 whitespace-nowrap
-                ${activeCategory === category
-                  ? 'bg-[#FF8142] text-white'
-                  : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
-                }`}
-            >
-              {category}
+        <div className="flex flex-col gap-6">
+          {/* Search Bar */}
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search datasets..."
+              className="w-full px-6 py-4 bg-white/5 text-white rounded-lg
+                border border-white/10 focus:border-[#FF8142]/30 focus:outline-none
+                transition-all duration-300"
+            />
+            <button className="absolute right-4 top-1/2 -translate-y-1/2
+              text-[#FF8142] hover:text-white transition-colors duration-300">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
             </button>
-          ))}
+          </div>
+
+          {/* Category Filters */}
+          <div className="flex gap-4 overflow-x-auto pb-4">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-6 py-2 rounded-full transition-all duration-300 whitespace-nowrap
+                  ${activeCategory === category
+                    ? 'bg-[#FF8142] text-white'
+                    : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
+                  }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* All Models */}
+      {/* Models */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h2 className="text-3xl font-bold text-white mb-8">{activeCategory} Models</h2>
+      <h2 className="text-3xl font-bold text-white mb-8">
+          {activeCategory} Models
+          <span className="text-gray-400 text-xl ml-3">
+            ({filteredModels.length} models)
+          </span>
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredModels.map((model, index) => (
             <motion.div
