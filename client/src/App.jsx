@@ -5,6 +5,8 @@ import Home from "./pages/Home/Home";
 import Models from "./pages/Models/Models";
 import Datasets from "./pages/Datasets/Datasets";
 import Details from "./pages/Details/Details";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { AuthProvider } from './context/AuthContext';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -17,18 +19,30 @@ const ScrollToTop = () => {
 };
 
 const App = () => {
+  if (!import.meta.env.VITE_GOOGLE_CLIENT_ID) {
+    console.error('Google Client ID is not configured');
+    return <div>Error: Google OAuth is not configured properly</div>;
+  }
+
   return (
-    <Router>
-      <ScrollToTop />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/models" element={<Models />} />
-        <Route path="/datasets" element={<Datasets />} />
-        <Route path="/details/:id" element={<Details />} />
-      </Routes>
-    </Router>
+    <GoogleOAuthProvider 
+      clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}
+      onScriptLoadError={() => console.error('Google Script failed to load')}
+    >
+      <AuthProvider>
+        <Router>
+          <ScrollToTop />
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/models" element={<Models />} />
+            <Route path="/datasets" element={<Datasets />} />
+            <Route path="/details/:id" element={<Details />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </GoogleOAuthProvider>
   );
 };
 

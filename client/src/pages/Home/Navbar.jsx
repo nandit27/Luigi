@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { GoogleLogin } from '@react-oauth/google';
+import { useAuth } from '../../context/AuthContext';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -7,6 +9,7 @@ const Navbar = () => {
   const [isAnnouncementOpen, setIsAnnouncementOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { user, login, logout, isTeacher } = useAuth();
 
   const handleSectionClick = (sectionId) => {
     if (location.pathname !== '/') {
@@ -59,6 +62,50 @@ const Navbar = () => {
       window.history.replaceState({}, document.title);
     }
   }, [location]);
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    const success = await login(credentialResponse);
+    if (!success) {
+      alert('Login failed. Please try again.');
+    }
+  };
+
+  const handleGoogleError = () => {
+    console.error('Login failed');
+  };
+
+  // Replace the Connect button with this new component
+  const AuthButton = () => {
+    if (user) {
+      return (
+        <div className="flex items-center space-x-4">
+          <span className="text-gray-300">{user.email}</span>
+          <button
+            onClick={logout}
+            className="px-6 py-2 bg-gradient-to-r from-[#32CD32] to-[#00FF7F] text-black font-semibold rounded-lg 
+              hover:from-[#00FF7F] hover:to-[#32CD32] transform hover:scale-105 transition-all duration-300
+              hover:shadow-[0_0_15px_rgba(50,205,50,0.5)]"
+          >
+            Logout
+          </button>
+        </div>
+      );
+    }
+
+    return (
+      <GoogleLogin
+        onSuccess={handleGoogleSuccess}
+        onError={handleGoogleError}
+        useOneTap={false}
+        theme="filled_black"
+        shape="rectangular"
+        text="signin_with"
+        size="large"
+        width="200"
+        context="signin"
+      />
+    );
+  };
 
   return (
     <header className={`fixed w-full z-50 transition-all duration-300 bg-[#171717]/95 backdrop-blur-sm py-4`}>
@@ -150,11 +197,8 @@ const Navbar = () => {
               )}
             </div>
 
-            <button className="px-6 py-2 bg-gradient-to-r from-[#32CD32] to-[#00FF7F] text-black font-semibold rounded-lg 
-              hover:from-[#00FF7F] hover:to-[#32CD32] transform hover:scale-105 transition-all duration-300
-              hover:shadow-[0_0_15px_rgba(50,205,50,0.5)] focus:ring-2 focus:ring-[#32CD32] focus:ring-opacity-50">
-              Connect
-            </button>
+            {/* Replace Connect button with AuthButton */}
+            <AuthButton />
           </div>
 
           {/* Mobile Menu Button */}
@@ -229,11 +273,10 @@ const Navbar = () => {
               </button>
             </div>
 
-            <button className="w-full px-6 py-2 bg-gradient-to-r from-[#32CD32] to-[#00FF7F] text-[#171717] font-semibold rounded-lg 
-              hover:from-[#00FF7F] hover:to-[#32CD32] transform hover:scale-105 transition-all duration-300
-              hover:shadow-[0_0_15px_rgba(255,129,66,0.3)]">
-              Connect
-            </button>
+            {/* Add AuthButton to Mobile Menu */}
+            <div className="flex justify-center py-2">
+              <AuthButton />
+            </div>
           </div>
         </div>
       </nav>
