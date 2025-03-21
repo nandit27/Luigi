@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isAnnouncementOpen, setIsAnnouncementOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -95,6 +96,60 @@ const Navbar = () => {
                 )}
               </div>
             ))}
+            
+            {/* Add Announcement Button */}
+            <div className="relative">
+              <button
+                onClick={() => setIsAnnouncementOpen(!isAnnouncementOpen)}
+                className="text-gray-300 hover:text-[#32CD32] transition-colors duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                  />
+                </svg>
+              </button>
+
+              {/* Announcement Popup */}
+              {isAnnouncementOpen && (
+                <div className="absolute right-0 mt-2 w-80 bg-[#171717] border border-[#32CD32]/20 rounded-lg shadow-lg shadow-[#32CD32]/10 p-4">
+                  <div className="flex justify-between items-center mb-4">
+                    <h3 className="text-[#32CD32] font-semibold">Announcements</h3>
+                    <button
+                      onClick={() => setIsAnnouncementOpen(false)}
+                      className="text-gray-400 hover:text-[#32CD32]"
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  <div className="text-gray-300">
+                    <p className="mb-2">No new announcements</p>
+                  </div>
+                </div>
+              )}
+            </div>
+
             <button className="px-6 py-2 bg-gradient-to-r from-[#32CD32] to-[#00FF7F] text-black font-semibold rounded-lg 
               hover:from-[#00FF7F] hover:to-[#32CD32] transform hover:scale-105 transition-all duration-300
               hover:shadow-[0_0_15px_rgba(50,205,50,0.5)] focus:ring-2 focus:ring-[#32CD32] focus:ring-opacity-50">
@@ -149,6 +204,31 @@ const Navbar = () => {
                 )}
               </div>
             ))}
+            
+            {/* Add Announcement Button to Mobile Menu */}
+            <div className="py-2">
+              <button
+                onClick={() => setIsAnnouncementOpen(!isAnnouncementOpen)}
+                className="flex items-center text-gray-300 hover:text-[#32CD32] transition-colors duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                  />
+                </svg>
+                Announcements
+              </button>
+            </div>
+
             <button className="w-full px-6 py-2 bg-gradient-to-r from-[#32CD32] to-[#00FF7F] text-[#171717] font-semibold rounded-lg 
               hover:from-[#00FF7F] hover:to-[#32CD32] transform hover:scale-105 transition-all duration-300
               hover:shadow-[0_0_15px_rgba(255,129,66,0.3)]">
