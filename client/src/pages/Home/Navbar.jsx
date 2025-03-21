@@ -149,7 +149,7 @@ const Navbar = () => {
                 )}
               </div>
             ))}
-            <button className="w-full px-6 py-2 bg-gradient-to-r from-[#32CD32] to-[#00FF7F] text-white font-semibold rounded-lg 
+            <button className="w-full px-6 py-2 bg-gradient-to-r from-[#32CD32] to-[#00FF7F] text-[#171717] font-semibold rounded-lg 
               hover:from-[#00FF7F] hover:to-[#32CD32] transform hover:scale-105 transition-all duration-300
               hover:shadow-[0_0_15px_rgba(255,129,66,0.3)]">
               Connect

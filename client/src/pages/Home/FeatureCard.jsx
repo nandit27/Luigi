@@ -21,7 +21,7 @@ const FeatureCard = ({ image, category, title, description }) => {
 
       <div className="relative">
         <span className="inline-block px-4 py-2 ml-5 -mt-5 text-xs font-semibold leading-none 
-          text-white uppercase bg-[#32CD32] rounded-md shadow-lg 
+          text-[#171717] uppercase bg-[#32CD32] rounded-md shadow-lg 
           transform transition-transform duration-200 ease-out group-hover:scale-105">
           {category}
         </span>
@@ -41,7 +41,7 @@ const FeatureCard = ({ image, category, title, description }) => {
         </div>
 
         <div className="px-8 pb-8 mt-auto">
-          <button className="mb-10 w-full px-6 py-3 text-white bg-gradient-to-r from-[#32CD32] to-[#00FF7F] 
+          <button className="mb-10 w-full px-6 py-3 text-[#171717] font-bold bg-gradient-to-r from-[#32CD32] to-[#00FF7F] 
             rounded-lg transition-all duration-200 ease-out hover:from-[#00FF7F] hover:to-[#32CD32]
             hover:scale-102 hover:shadow-lg hover:shadow-[#32CD32]/20 
             focus:ring-2 focus:ring-[#32CD32] focus:ring-opacity-50 active:scale-98">

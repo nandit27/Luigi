@@ -1,25 +1,29 @@
-import StatsCard from "./StatsCard";
 import { motion } from "framer-motion";
+import CountUp from 'react-countup';
 
 const AboutSection = () => {
   const stats = [
     { 
-      value: "1000+", 
+      value: "1000", 
+      suffix: "+",
       label: "Datasets",
       description: "High-quality datasets available"
     },
     { 
-      value: "2.5K+", 
+      value: "2.5", 
+      suffix: "K+",
       label: "Projects",
       description: "Student projects completed"
     },
     { 
-      value: "100+", 
+      value: "100",
+      suffix: "+", 
       label: "Universities",
       description: "Trust our platform"
     },
     { 
-      value: "6", 
+      value: "6",
+      suffix: "", 
       label: "Categories",
       description: "Covering major domains"
     }
@@ -51,12 +55,9 @@ const AboutSection = () => {
         </h2>
       </motion.div>
 
-      <motion.p 
-        {...fadeInUp}
-        className="mb-12 text-lg leading-7 text-center max-w-[600px] text-neutral-200 
-          bg-white/5 p-6 rounded-lg backdrop-blur-sm border border-white/10 
-          hover:border-[#32CD32]/30 transition-all duration-300"
-      >
+      <motion.p {...fadeInUp} className="mb-12 text-lg leading-7 text-center max-w-[600px] text-neutral-200 
+        bg-white/5 p-6 rounded-lg backdrop-blur-sm border border-white/10 
+        hover:border-[#32CD32]/30 transition-all duration-300">
         LUIGI is dedicated to empowering students with high-quality datasets for their academic projects. 
         Our mission is to make data-driven development accessible and efficient for educational purposes, 
         helping students create impactful projects that solve real-world problems.
@@ -72,9 +73,20 @@ const AboutSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white/5 rounded-xl p-6 text-center group hover:bg-white/10 
-                transition-all duration-300 border border-white/10 hover:border-[#32CD32]/30"
+                transition-all duration-300 border border-white/10 hover:border-[#32CD32]/30
+                hover:shadow-lg hover:shadow-[#32CD32]/10 transform hover:scale-105"
             >
-              <h3 className="text-3xl font-bold text-[#32CD32] mb-2">{stat.value}</h3>
+              <h3 className="text-3xl font-bold text-[#32CD32] mb-2">
+                <CountUp
+                  end={parseFloat(stat.value)}
+                  duration={2.5}
+                  separator=","
+                  decimals={stat.value.includes('.') ? 1 : 0}
+                  suffix={stat.suffix}
+                  enableScrollSpy
+                  scrollSpyOnce
+                />
+              </h3>
               <p className="text-white font-semibold mb-1">{stat.label}</p>
               <p className="text-gray-400 text-sm">{stat.description}</p>
             </motion.div>
@@ -86,7 +98,8 @@ const AboutSection = () => {
         {...fadeInUp}
         className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
       >
-        <div className="bg-white/5 p-6 rounded-lg border border-white/10 hover:border-[#32CD32]/30 transition-all duration-300">
+        <div className="bg-white/5 p-6 rounded-lg border border-white/10 hover:border-[#32CD32]/30 
+          transition-all duration-300 hover:shadow-lg hover:shadow-[#32CD32]/10 transform hover:scale-105">
           <h3 className="text-xl font-semibold text-[#32CD32] mb-4">For Students</h3>
           <ul className="space-y-2 text-gray-400">
             <li>• Access curated datasets for academic projects</li>
@@ -96,7 +109,8 @@ const AboutSection = () => {
           </ul>
         </div>
 
-        <div className="bg-white/5 p-6 rounded-lg border border-white/10 hover:border-[#32CD32]/30 transition-all duration-300">
+        <div className="bg-white/5 p-6 rounded-lg border border-white/10 hover:border-[#32CD32]/30 
+          transition-all duration-300 hover:shadow-lg hover:shadow-[#32CD32]/10 transform hover:scale-105">
           <h3 className="text-xl font-semibold text-[#32CD32] mb-4">For Universities</h3>
           <ul className="space-y-2 text-gray-400">
             <li>• Support student research projects</li>
