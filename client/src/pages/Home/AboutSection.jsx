@@ -35,16 +35,16 @@ const AboutSection = () => {
   return (
     <section id="about" className="relative flex flex-col items-center px-4 py-28 text-white bg-[#171717] overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[#FF8142]/10 rounded-full blur-[100px]" />
-        <div className="absolute bottom-20 right-10 w-72 h-72 bg-[#FF8142]/10 rounded-full blur-[100px]" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-[#32CD32]/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-20 right-10 w-72 h-72 bg-[#32CD32]/10 rounded-full blur-[100px]" />
       </div>
 
       <motion.div {...fadeInUp} className="relative">
         <h2 className="mb-2.5 text-center text-7xl font-bold uppercase leading-tight text-neutral-200 max-sm:text-4xl max-sm:leading-10">
           <span>About </span>
-          <span className="text-[#FF8142] relative inline-block
+          <span className="text-[#32CD32] relative inline-block
             after:content-[''] after:absolute after:-bottom-2 after:left-0 
-            after:w-full after:h-1 after:bg-[#FF8142] after:transform after:scale-x-0 
+            after:w-full after:h-1 after:bg-[#32CD32] after:transform after:scale-x-0 
             after:transition-transform after:duration-300 hover:after:scale-x-100">
             LUIGI
           </span>
@@ -55,7 +55,7 @@ const AboutSection = () => {
         {...fadeInUp}
         className="mb-12 text-lg leading-7 text-center max-w-[600px] text-neutral-200 
           bg-white/5 p-6 rounded-lg backdrop-blur-sm border border-white/10 
-          hover:border-[#FF8142]/30 transition-all duration-300"
+          hover:border-[#32CD32]/30 transition-all duration-300"
       >
         LUIGI is dedicated to empowering students with high-quality datasets for their academic projects. 
         Our mission is to make data-driven development accessible and efficient for educational purposes, 
@@ -72,9 +72,9 @@ const AboutSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white/5 rounded-xl p-6 text-center group hover:bg-white/10 
-                transition-all duration-300 border border-white/10 hover:border-[#FF8142]/30"
+                transition-all duration-300 border border-white/10 hover:border-[#32CD32]/30"
             >
-              <h3 className="text-3xl font-bold text-[#FF8142] mb-2">{stat.value}</h3>
+              <h3 className="text-3xl font-bold text-[#32CD32] mb-2">{stat.value}</h3>
               <p className="text-white font-semibold mb-1">{stat.label}</p>
               <p className="text-gray-400 text-sm">{stat.description}</p>
             </motion.div>
@@ -86,8 +86,8 @@ const AboutSection = () => {
         {...fadeInUp}
         className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
       >
-        <div className="bg-white/5 p-6 rounded-lg border border-white/10 hover:border-[#FF8142]/30 transition-all duration-300">
-          <h3 className="text-xl font-semibold text-[#FF8142] mb-4">For Students</h3>
+        <div className="bg-white/5 p-6 rounded-lg border border-white/10 hover:border-[#32CD32]/30 transition-all duration-300">
+          <h3 className="text-xl font-semibold text-[#32CD32] mb-4">For Students</h3>
           <ul className="space-y-2 text-gray-400">
             <li>• Access curated datasets for academic projects</li>
             <li>• Find data across multiple domains</li>
@@ -96,8 +96,8 @@ const AboutSection = () => {
           </ul>
         </div>
 
-        <div className="bg-white/5 p-6 rounded-lg border border-white/10 hover:border-[#FF8142]/30 transition-all duration-300">
-          <h3 className="text-xl font-semibold text-[#FF8142] mb-4">For Universities</h3>
+        <div className="bg-white/5 p-6 rounded-lg border border-white/10 hover:border-[#32CD32]/30 transition-all duration-300">
+          <h3 className="text-xl font-semibold text-[#32CD32] mb-4">For Universities</h3>
           <ul className="space-y-2 text-gray-400">
             <li>• Support student research projects</li>
             <li>• Ensure quality data accessibility</li>

@@ -69,7 +69,7 @@ const Navbar = () => {
               alt="Logo"
               className="h-[60px] w-[60px] hover:scale-105 transition-transform duration-300"
             />
-            <span className="ml-2 text-[#FF8142] font-bold text-2xl hidden sm:block">
+            <span className="ml-2 text-[#32CD32] font-bold text-2xl hidden sm:block">
               LUIGI
             </span>
           </div>
@@ -82,22 +82,22 @@ const Navbar = () => {
                 className="cursor-pointer"
               >
                 {item.onClick ? (
-                  <span className="text-gray-300 hover:text-[#FF8142] transition-colors duration-300">
+                  <span className="text-gray-300 hover:text-[#32CD32] transition-colors duration-300">
                     {item.name}
                   </span>
                 ) : (
                   <Link
                     to={item.href}
-                    className="text-gray-300 hover:text-[#FF8142] transition-colors duration-300"
+                    className="text-gray-300 hover:text-[#32CD32] transition-colors duration-300"
                   >
                     {item.name}
                   </Link>
                 )}
               </div>
             ))}
-            <button className="px-6 py-2 bg-gradient-to-r from-[#FF8142] to-[#FF9061] text-white font-semibold rounded-lg 
-              hover:from-[#FF9061] hover:to-[#FF8142] transform hover:scale-105 transition-all duration-300
-              hover:shadow-[0_0_15px_rgba(255,129,66,0.3)] focus:ring-2 focus:ring-[#FF8142] focus:ring-opacity-50">
+            <button className="px-6 py-2 bg-gradient-to-r from-[#32CD32] to-[#00FF7F] text-black font-semibold rounded-lg 
+              hover:from-[#00FF7F] hover:to-[#32CD32] transform hover:scale-105 transition-all duration-300
+              hover:shadow-[0_0_15px_rgba(50,205,50,0.5)] focus:ring-2 focus:ring-[#32CD32] focus:ring-opacity-50">
               Connect
             </button>
           </div>
@@ -108,11 +108,11 @@ const Navbar = () => {
             className="md:hidden text-white p-2 focus:outline-none"
           >
             <div className={`w-6 h-5 relative transform transition-all duration-300 ${isMobileMenuOpen ? 'rotate-180' : ''}`}>
-              <span className={`absolute h-0.5 w-full bg-[#FF8142] transform transition-all duration-300 
+              <span className={`absolute h-0.5 w-full bg-[#32CD32] transform transition-all duration-300 
                 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : 'translate-y-0'}`}></span>
-              <span className={`absolute h-0.5 w-full bg-[#FF8142] transform transition-all duration-300 translate-y-2 
+              <span className={`absolute h-0.5 w-full bg-[#32CD32] transform transition-all duration-300 translate-y-2 
                 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-              <span className={`absolute h-0.5 w-full bg-[#FF8142] transform transition-all duration-300 translate-y-4 
+              <span className={`absolute h-0.5 w-full bg-[#32CD32] transform transition-all duration-300 translate-y-4 
                 ${isMobileMenuOpen ? '-rotate-45 -translate-y-0' : ''}`}></span>
             </div>
           </button>
@@ -135,13 +135,13 @@ const Navbar = () => {
                 className="py-2"
               >
                 {item.onClick ? (
-                  <span className="text-gray-300 hover:text-[#FF8142] transition-colors duration-300">
+                  <span className="text-gray-300 hover:text-[#32CD32] transition-colors duration-300">
                     {item.name}
                   </span>
                 ) : (
                   <Link
                     to={item.href}
-                    className="text-gray-300 hover:text-[#FF8142] transition-colors duration-300"
+                    className="text-gray-300 hover:text-[#32CD32] transition-colors duration-300"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.name}
@@ -149,8 +149,8 @@ const Navbar = () => {
                 )}
               </div>
             ))}
-            <button className="w-full px-6 py-2 bg-gradient-to-r from-[#FF8142] to-[#FF9061] text-white font-semibold rounded-lg 
-              hover:from-[#FF9061] hover:to-[#FF8142] transform hover:scale-105 transition-all duration-300
+            <button className="w-full px-6 py-2 bg-gradient-to-r from-[#32CD32] to-[#00FF7F] text-white font-semibold rounded-lg 
+              hover:from-[#00FF7F] hover:to-[#32CD32] transform hover:scale-105 transition-all duration-300
               hover:shadow-[0_0_15px_rgba(255,129,66,0.3)]">
               Connect
             </button>

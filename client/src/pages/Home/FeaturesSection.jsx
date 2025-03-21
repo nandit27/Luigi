@@ -5,7 +5,7 @@ const FeaturesSection = () => {
   const features = [
     {
       image:
-        "images/dataset-icon.jpeg",
+        "images/dataset-icon.jpg",
       category: "DataSets",
       title: "Rich Library of Datasets",
       description:
@@ -21,7 +21,7 @@ const FeaturesSection = () => {
     },
     {
       image:
-        "images/models-icon.jpeg",
+        "images/models-icon.jpg",
       category: "Models",
       title: "Extensive Model Repository",
       description:
@@ -59,13 +59,13 @@ const FeaturesSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="absolute top-20 left-10 w-72 h-72 bg-[#FF8142]/10 rounded-full blur-[100px]"
+          className="absolute top-20 left-10 w-72 h-72 bg-[#32CD32]/10 rounded-full blur-[100px]"
         />
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="absolute bottom-20 right-10 w-72 h-72 bg-[#FF8142]/10 rounded-full blur-[100px]"
+          className="absolute bottom-20 right-10 w-72 h-72 bg-[#32CD32]/10 rounded-full blur-[100px]"
         />
       </div>
 
@@ -82,7 +82,7 @@ const FeaturesSection = () => {
           </h2>
           <div className="text-7xl font-bold text-center uppercase leading-[74.8px] text-neutral-200 max-sm:text-4xl max-sm:leading-10">
             <span className="relative inline-block">Luigi</span>
-            <span className="text-[#FF8142] ml-4 relative inline-block">features</span>
+            <span className="text-[#32CD32] ml-4 relative inline-block">features</span>
           </div>
         </motion.div>
 

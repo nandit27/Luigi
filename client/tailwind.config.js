@@ -16,7 +16,7 @@ module.exports = {
         },
       },
       colors: {
-        primary: '#FF8142',
+        primary: '#32CD32',
         dark: '#171717',
       },
       transitionProperty: {

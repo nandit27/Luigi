@@ -56,13 +56,13 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               {/* Social Media Links */}
-              <a href="https://github.com" className="text-[#FF8142] hover:text-white transition-colors duration-300">
+              <a href="https://github.com" className="text-[#32CD32] hover:text-white transition-colors duration-300">
                 <i className="fab fa-github text-xl"></i>
               </a>
-              <a href="https://linkedin.com" className="text-[#FF8142] hover:text-white transition-colors duration-300">
+              <a href="https://linkedin.com" className="text-[#32CD32] hover:text-white transition-colors duration-300">
                 <i className="fab fa-linkedin text-xl"></i>
               </a>
-              <a href="https://twitter.com" className="text-[#FF8142] hover:text-white transition-colors duration-300">
+              <a href="https://twitter.com" className="text-[#32CD32] hover:text-white transition-colors duration-300">
                 <i className="fab fa-twitter text-xl"></i>
               </a>
             </div>
@@ -77,7 +77,7 @@ const Footer = () => {
                   <li key={index}>
                     <Link
                       to={link.href}
-                      className="text-gray-400 hover:text-[#FF8142] transition-colors duration-300"
+                      className="text-gray-400 hover:text-[#32CD32] transition-colors duration-300"
                     >
                       {link.text}
                     </Link>
@@ -95,13 +95,13 @@ const Footer = () => {
               © 2024 LUIGI. All rights reserved. Dedicated to supporting student projects.
             </p>
             <div className="flex space-x-6">
-              <Link to="/terms" className="text-gray-400 hover:text-[#FF8142] text-sm transition-colors duration-300">
+              <Link to="/terms" className="text-gray-400 hover:text-[#32CD32] text-sm transition-colors duration-300">
                 Terms
               </Link>
-              <Link to="/privacy" className="text-gray-400 hover:text-[#FF8142] text-sm transition-colors duration-300">
+              <Link to="/privacy" className="text-gray-400 hover:text-[#32CD32] text-sm transition-colors duration-300">
                 Privacy
               </Link>
-              <Link to="/cookies" className="text-gray-400 hover:text-[#FF8142] text-sm transition-colors duration-300">
+              <Link to="/cookies" className="text-gray-400 hover:text-[#32CD32] text-sm transition-colors duration-300">
                 Cookies
               </Link>
             </div>

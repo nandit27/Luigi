@@ -20,7 +20,7 @@ const DatasetCard = ({ data }) => {
     <motion.div
       whileHover={{ y: -5 }}
       className="bg-white/5 rounded-xl overflow-hidden border border-white/10 
-        hover:border-[#FF8142]/30 transition-all duration-300 h-full"
+        hover:border-[#32CD32]/30 transition-all duration-300 h-full"
     >
       <div className="relative h-48 overflow-hidden group">
         <img
@@ -31,7 +31,7 @@ const DatasetCard = ({ data }) => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#171717] to-transparent opacity-60" />
         <div className="absolute top-4 right-4">
-          <span className="px-3 py-1 bg-[#FF8142]/20 text-[#FF8142] rounded-full text-sm">
+          <span className="px-3 py-1 bg-[#32CD32]/20 text-[#32CD32] rounded-full text-sm">
             {category}
           </span>
         </div>
@@ -43,7 +43,7 @@ const DatasetCard = ({ data }) => {
         
         <div className="flex items-center gap-4 mb-4">
           <div className="flex items-center gap-2">
-            <span className="text-sm text-[#FF8142]">Usability</span>
+            <span className="text-sm text-[#32CD32]">Usability</span>
             <span className="text-sm text-white">{usability}</span>
           </div>
           <span className="text-gray-400">•</span>
@@ -67,8 +67,8 @@ const DatasetCard = ({ data }) => {
 
       <div className="p-6 pt-0">
         <button className="w-full px-4 py-2 bg-white/5 text-white rounded-lg
-          hover:bg-[#FF8142] transition-all duration-300 border border-white/10
-          hover:border-[#FF8142]">
+          hover:bg-[#32CD32] transition-all duration-300 border border-white/10
+          hover:border-[#32CD32]">
           View Dataset
         </button>
       </div>

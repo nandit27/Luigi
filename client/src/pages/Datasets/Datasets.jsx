@@ -35,8 +35,8 @@ const Datasets = () => {
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-[#FF8142]/10 rounded-full blur-[100px]" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#FF8142]/10 rounded-full blur-[100px]" />
+          <div className="absolute top-20 left-10 w-96 h-96 bg-[#32CD32]/10 rounded-full blur-[100px]" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#32CD32]/10 rounded-full blur-[100px]" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
@@ -66,11 +66,11 @@ const Datasets = () => {
               type="text"
               placeholder="Search datasets..."
               className="w-full px-6 py-4 bg-white/5 text-white rounded-lg
-                border border-white/10 focus:border-[#FF8142]/30 focus:outline-none
+                border border-white/10 focus:border-[#32CD32]/30 focus:outline-none
                 transition-all duration-300"
             />
             <button className="absolute right-4 top-1/2 -translate-y-1/2
-              text-[#FF8142] hover:text-white transition-colors duration-300">
+              text-[#32CD32] hover:text-white transition-colors duration-300">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
@@ -87,7 +87,7 @@ const Datasets = () => {
                 }}
                 className={`px-6 py-2 rounded-full transition-all duration-300 whitespace-nowrap
                   ${activeCategory === category
-                    ? 'bg-[#FF8142] text-white'
+                    ? 'bg-[#32CD32] text-white'
                     : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
                   }`}
               >

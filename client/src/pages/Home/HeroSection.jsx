@@ -53,14 +53,14 @@ const HeroSection = () => {
           <motion.span 
             variants={letterVariants}
             whileHover="hover"
-            className="text-[#FF8142] hover:text-orange-400 inline-block transition-colors duration-300"
+            className="text-[#32CD32] hover:text-green-400 inline-block transition-colors duration-300"
           >
             U
           </motion.span>
           <motion.span 
             variants={letterVariants}
             whileHover="hover"
-            className="text-[#FF8142] hover:text-orange-400 inline-block transition-colors duration-300"
+            className="text-[#32CD32] hover:text-green-400 inline-block transition-colors duration-300"
           >
             I
           </motion.span>
@@ -97,20 +97,20 @@ const HeroSection = () => {
       >
         <button 
           onClick={() => navigate('/datasets')}
-          className="px-8 py-2.5 text-xl font-semibold text-white cursor-pointer 
-            border-[none] min-w-[180px] bg-gradient-to-r from-[#FF8142] to-[#FF9061] 
-            hover:from-[#FF9061] hover:to-[#FF8142] transition-all duration-300 
-            transform hover:scale-105 hover:shadow-[0_0_15px_rgba(255,129,66,0.5)] 
+          className="px-8 py-2.5 text-xl font-semibold text-[#171717] cursor-pointer 
+            border-[none] min-w-[180px] bg-gradient-to-r from-[#32CD32] to-[#00FF7F] 
+            hover:from-[#00FF7F] hover:to-[#32CD32] transition-all duration-300 
+            transform hover:scale-105 hover:shadow-[0_0_15px_rgba(50,205,50,0.5)] 
             rounded-md"
         >
           Search Dataset
         </button>
         <button 
           onClick={() => navigate('/models')}
-          className="px-8 py-2.5 text-xl font-semibold text-white cursor-pointer 
-            border-[none] min-w-[180px] bg-gradient-to-r from-[#FF8142] to-[#FF9061] 
-            hover:from-[#FF9061] hover:to-[#FF8142] transition-all duration-300 
-            transform hover:scale-105 hover:shadow-[0_0_15px_rgba(255,129,66,0.5)] 
+          className="px-8 py-2.5 text-xl font-semibold text-[#171717] cursor-pointer 
+            border-[none] min-w-[180px] bg-gradient-to-r from-[#32CD32] to-[#00FF7F] 
+            hover:from-[#00FF7F] hover:to-[#32CD32] transition-all duration-300 
+            transform hover:scale-105 hover:shadow-[0_0_15px_rgba(50,205,50,0.5)] 
             rounded-md"
         >
           Search Models
@@ -120,7 +120,7 @@ const HeroSection = () => {
         <img
           src="images/hero.png"
           alt="Hero"
-          className="w-full max-w-[1500px] h-auto object-contain hover:scale-105 transition-transform duration-500"
+          className="w-full max-w-[400px] h-auto object-contain hover:scale-105 transition-transform duration-500"
         />
       </div>
     </section>

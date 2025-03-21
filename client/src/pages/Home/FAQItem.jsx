@@ -9,19 +9,19 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
         visible: { opacity: 1, y: 0 }
       }}
       className="overflow-hidden rounded-lg bg-white/5 backdrop-blur-sm 
-        border border-white/10 hover:border-[#FF8142]/30 transition-all duration-300"
+        border border-white/10 hover:border-[#32CD32]/30 transition-all duration-300"
     >
       <button
         onClick={onClick}
         className="flex justify-between items-center w-full p-6 text-xl font-bold 
-          text-left text-white transition-all duration-300 hover:text-[#FF8142]"
+          text-left text-white transition-all duration-300 hover:text-[#32CD32]"
       >
         <span className="pr-8">{question}</span>
         <motion.span
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
           className="flex items-center justify-center w-8 h-8 rounded-full 
-            bg-gradient-to-r from-[#FF8142] to-[#FF9061] text-white"
+            bg-gradient-to-r from-[#32CD32] to-[#00FF7F] text-white"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

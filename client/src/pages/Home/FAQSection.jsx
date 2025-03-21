@@ -40,13 +40,13 @@ const FAQSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="absolute top-20 left-10 w-72 h-72 bg-[#FF8142]/10 rounded-full blur-[100px]"
+          className="absolute top-20 left-10 w-72 h-72 bg-[#32CD32]/10 rounded-full blur-[100px]"
         />
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="absolute bottom-20 right-10 w-72 h-72 bg-[#FF8142]/10 rounded-full blur-[100px]"
+          className="absolute bottom-20 right-10 w-72 h-72 bg-[#32CD32]/10 rounded-full blur-[100px]"
         />
       </div>
 
@@ -60,7 +60,7 @@ const FAQSection = () => {
         >
           <h2 className="text-7xl font-bold text-center uppercase leading-[74.8px] text-neutral-200 max-sm:text-4xl max-sm:leading-10">
             Frequently Asked
-            <span className="block text-[#FF8142] mt-2">Questions</span>
+            <span className="block text-[#32CD32] mt-2">Questions</span>
           </h2>
         </motion.div>
 
@@ -71,7 +71,7 @@ const FAQSection = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mx-auto mt-8 mb-12 text-lg leading-7 max-w-[480px] text-neutral-200
             bg-white/5 p-6 rounded-lg backdrop-blur-sm border border-white/10 
-            hover:border-[#FF8142]/30 transition-all duration-300"
+            hover:border-[#32CD32]/30 transition-all duration-300"
         >
           If you can't find your answer here, feel free to contact us via our
           email or social media! FAQ last updated March 2nd, 2025.
