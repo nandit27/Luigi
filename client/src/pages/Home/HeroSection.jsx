@@ -118,9 +118,9 @@ const HeroSection = () => {
       </motion.div>
       <div className="relative z-10 w-full max-md:h-auto flex justify-center animate-fadeIn">
         <img
-          src="images/hero.png"
+          src="images/hero-image.png"
           alt="Hero"
-          className="w-full max-w-[400px] h-auto object-contain hover:scale-105 transition-transform duration-500"
+          className="w-full max-w-[1400px] h-auto object-contain"
         />
       </div>
     </section>

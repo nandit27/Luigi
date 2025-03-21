@@ -4,6 +4,7 @@ import Navbar from "./pages/Home/Navbar";
 import Home from "./pages/Home/Home";
 import Models from "./pages/Models/Models";
 import Datasets from "./pages/Datasets/Datasets";
+import Details from "./pages/Details/Details";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/models" element={<Models />} />
         <Route path="/datasets" element={<Datasets />} />
+        <Route path="/details/:id" element={<Details />} />
       </Routes>
     </Router>
   );

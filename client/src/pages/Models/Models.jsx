@@ -84,7 +84,7 @@ const Models = () => {
                 onClick={() => setActiveCategory(category)}
                 className={`px-6 py-2 rounded-full transition-all duration-300 whitespace-nowrap
                   ${activeCategory === category
-                    ? 'bg-[#32CD32] text-white'
+                    ? 'bg-[#32CD32] text-[#171717]'
                     : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
                   }`}
               >

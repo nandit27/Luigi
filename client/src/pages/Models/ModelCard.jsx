@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from 'react-router-dom';
 
 const ModelCard = ({ model }) => {
   const { title, description, image, downloads, rating, category, author } = model;
@@ -39,11 +40,12 @@ const ModelCard = ({ model }) => {
       </div>
 
       <div className="p-6 pt-0">
-        <button className="w-full px-4 py-2 bg-white/5 text-white rounded-lg
-          hover:bg-[#32CD32] transition-all duration-300 border border-white/10
-          hover:border-[#32CD32]">
-          View Details
-        </button>
+        <Link 
+          to={`/details/${model.id}`} 
+          className="w-full px-4 py-2 bg-white/5 text-white rounded-lg block text-center
+            hover:bg-[#32CD32] hover:text-[#171717] transition-all duration-300 border border-white/10">
+          View Model
+        </Link>
       </div>
     </motion.div>
   );
