@@ -66,7 +66,7 @@ const Navbar = () => {
   const handleGoogleSuccess = async (credentialResponse) => {
     const success = await login(credentialResponse);
     if (!success) {
-      alert('Login failed. Please try again.');
+      alert('Only Charusat email addresses are allowed');
     }
   };
 
@@ -83,11 +83,26 @@ const Navbar = () => {
           <button
             onClick={logout}
             className="px-6 py-2 bg-gradient-to-r from-[#32CD32] to-[#00FF7F] text-black font-semibold rounded-lg 
-              hover:from-[#00FF7F] hover:to-[#32CD32] transform hover:scale-105 transition-all duration-300
-              hover:shadow-[0_0_15px_rgba(50,205,50,0.5)]"
+              hover:from-[#00FF7F] hover:to-[#32CD32] transform hover:scale-105 transition-all duration-300"
           >
             Logout
           </button>
+          <Link 
+            to={user.email.endsWith('@charusat.edu.in') ? '/dashboard/student' : '/dashboard/admin'}
+            className="relative group"
+          >
+            <img 
+              src={user.picture || '/default-avatar.png'} 
+              alt="Profile" 
+              className="w-10 h-10 rounded-full border-2 border-[#32CD32] transition-transform 
+                duration-300 group-hover:scale-110"
+            />
+            <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 
+              opacity-0 group-hover:opacity-100 transition-opacity duration-300 
+              text-xs text-[#32CD32]">
+              Dashboard
+            </span>
+          </Link>
         </div>
       );
     }

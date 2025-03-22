@@ -1,9 +1,15 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
-const authRouter = require('./routes/auth');
-const datasetsRouter = require('./routes/datasets');
+import 'dotenv/config';
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import authRouter from './routes/auth.js';
+import datasetsRouter from './routes/datasets.js';
+import announcementsRouter from './routes/announcements.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -15,14 +21,20 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// Connect to MongoDB
+mongoose.connect(process.env.mongo)
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('MongoDB connection error:', err));
+
 // Routes
 app.use('/api/auth', authRouter);
 app.use('/api/datasets', datasetsRouter);
+app.use('/api/announcements', announcementsRouter);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ error: 'Something went wrong!' });
+  res.status(500).json({ error: 'Something broke!' });
 });
 
 app.listen(PORT, () => {

@@ -1,6 +1,10 @@
-const path = require('path');
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-module.exports = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const config = {
   // Configure the path where your datasets are stored
   datasetsPath: path.join(__dirname, '..', '..', 'datasets'),
   
@@ -9,4 +13,6 @@ module.exports = {
   
   // Maximum file size (in bytes) - 100MB
   maxFileSize: 100 * 1024 * 1024
-}; 
+};
+
+export default config; 

@@ -1,6 +1,6 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
-const authMiddleware = async (req, res, next) => {
+export const authMiddleware = async (req, res, next) => {
   try {
     const token = req.headers.authorization?.split(' ')[1];
     
@@ -16,14 +16,16 @@ const authMiddleware = async (req, res, next) => {
   }
 };
 
-const teacherOnly = (req, res, next) => {
-  // Remove email validation - allow all users
+export const adminOnly = (req, res, next) => {
+  if (req.user.role !== 'admin') {
+    return res.status(403).json({ message: 'Admin access required' });
+  }
   next();
 };
 
-const studentOnly = (req, res, next) => {
-  // Remove email validation - allow all users
+export const studentOnly = (req, res, next) => {
+  if (req.user.role !== 'student') {
+    return res.status(403).json({ message: 'Student access required' });
+  }
   next();
-};
-
-module.exports = { authMiddleware, teacherOnly, studentOnly }; 
+}; 

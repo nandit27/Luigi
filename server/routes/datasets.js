@@ -1,27 +1,19 @@
-const express = require('express');
+import express from 'express';
+import { authMiddleware, adminOnly, studentOnly } from '../middleware/auth.js';
+import * as datasetController from '../controllers/datasetController.js';
+
 const router = express.Router();
-const datasetController = require('../controllers/datasetController');
-const { authMiddleware, teacherOnly } = require('../middleware/auth');
 
-// Get all datasets
+// Public routes
 router.get('/', datasetController.getAllDatasets);
-
-// Get specific dataset by ID
 router.get('/:id', datasetController.getDatasetById);
 
-// Public route - anyone can access
-router.get('/datasets', async (req, res) => {
-  // Return datasets
-});
+// Admin routes
+router.post('/', authMiddleware, adminOnly, datasetController.uploadDataset);
+router.get('/uploaded', authMiddleware, adminOnly, datasetController.getUploadedDatasets);
+router.delete('/:id', authMiddleware, adminOnly, datasetController.deleteDataset);
 
-// Protected route - only authenticated teachers can access
-router.post('/datasets', authMiddleware, teacherOnly, async (req, res) => {
-  // Add new dataset
-});
+// Student routes
+router.get('/downloaded', authMiddleware, studentOnly, datasetController.getDownloadedDatasets);
 
-// Protected route - only authenticated teachers can access
-router.delete('/datasets/:id', authMiddleware, teacherOnly, async (req, res) => {
-  // Delete dataset
-});
-
-module.exports = router; 
+export default router; 

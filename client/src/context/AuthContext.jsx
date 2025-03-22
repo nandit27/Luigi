@@ -6,9 +6,8 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // For now, consider all authenticated users as both teacher and student
-  const isTeacher = Boolean(user);
-  const isStudent = Boolean(user);
+  const isAdmin = user?.role === 'admin';
+  const isStudent = user?.role === 'student';
   const isAuthenticated = Boolean(user);
 
   const login = async (googleResponse) => {
@@ -67,7 +66,7 @@ export const AuthProvider = ({ children }) => {
       user, 
       login, 
       logout, 
-      isTeacher, 
+      isAdmin,
       isStudent, 
       isAuthenticated,
       loading 

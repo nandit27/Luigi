@@ -1,8 +1,25 @@
-const fs = require('fs').promises;
-const path = require('path');
-const config = require('../config/config');
+import fs from 'fs/promises';
+import path from 'path';
+import multer from 'multer';
+import { fileURLToPath } from 'url';
+import config from '../config/config.js';
+import User from '../models/User.js';
 
-exports.getAllDatasets = async (req, res) => {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+  destination: config.datasetsPath,
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({ storage });
+
+export const getAllDatasets = async (req, res) => {
   try {
     const datasets = await scanDirectory(config.datasetsPath);
     res.json(datasets);
@@ -11,7 +28,7 @@ exports.getAllDatasets = async (req, res) => {
   }
 };
 
-exports.getDatasetById = async (req, res) => {
+export const getDatasetById = async (req, res) => {
   try {
     const { id } = req.params;
     const filePath = path.join(config.datasetsPath, id);
@@ -21,12 +38,117 @@ exports.getDatasetById = async (req, res) => {
       return res.status(404).json({ error: 'Dataset not found' });
     }
 
+    // Record the download if user is authenticated
+    if (req.user) {
+      await User.findByIdAndUpdate(req.user._id, {
+        $push: {
+          downloadedDatasets: {
+            datasetId: id,
+            downloadedAt: new Date(),
+            name: path.parse(id).name,
+            size: formatSize(stats.size)
+          }
+        }
+      });
+    }
+
     const fileStream = fs.createReadStream(filePath);
     res.setHeader('Content-Type', 'application/octet-stream');
     res.setHeader('Content-Disposition', `attachment; filename=${id}`);
     fileStream.pipe(res);
   } catch (error) {
     res.status(500).json({ error: 'Error downloading dataset' });
+  }
+};
+
+export const uploadDataset = async (req, res) => {
+  try {
+    upload.single('dataset')(req, res, async (err) => {
+      if (err) {
+        return res.status(400).json({ error: 'Error uploading file' });
+      }
+
+      const { name, description } = req.body;
+      const file = req.file;
+
+      if (!file) {
+        return res.status(400).json({ error: 'No file uploaded' });
+      }
+
+      // Update user's uploadedDatasets array
+      await User.findByIdAndUpdate(req.user.userId, {
+        $push: {
+          uploadedDatasets: {
+            name,
+            description,
+            fileSize: formatSize(file.size),
+            filePath: file.path,
+            uploadedAt: new Date()
+          }
+        }
+      });
+
+      res.status(201).json({
+        message: 'Dataset uploaded successfully',
+        dataset: {
+          name,
+          description,
+          size: formatSize(file.size),
+          path: file.filename
+        }
+      });
+    });
+  } catch (error) {
+    console.error('Upload error:', error);
+    res.status(500).json({ error: 'Error uploading dataset' });
+  }
+};
+
+export const getUploadedDatasets = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.userId)
+      .select('uploadedDatasets')
+      .lean();
+
+    res.json(user.uploadedDatasets);
+  } catch (error) {
+    res.status(500).json({ error: 'Error fetching uploaded datasets' });
+  }
+};
+
+export const getDownloadedDatasets = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.userId)
+      .select('downloadedDatasets')
+      .lean();
+
+    res.json(user.downloadedDatasets);
+  } catch (error) {
+    res.status(500).json({ error: 'Error fetching downloaded datasets' });
+  }
+};
+
+export const deleteDataset = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findById(req.user.userId);
+    const dataset = user.uploadedDatasets.id(id);
+
+    if (!dataset) {
+      return res.status(404).json({ error: 'Dataset not found' });
+    }
+
+    // Delete file from filesystem
+    await fs.unlink(dataset.filePath);
+
+    // Remove dataset from user's uploadedDatasets
+    await User.findByIdAndUpdate(req.user.userId, {
+      $pull: { uploadedDatasets: { _id: id } }
+    });
+
+    res.json({ message: 'Dataset deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Error deleting dataset' });
   }
 };
 
