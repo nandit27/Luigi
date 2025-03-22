@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import ParticlesBackground from "./ParticlesBackground";
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -35,7 +36,12 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="mt-20 flex flex-col items-center pt-10 bg-[url('images/bg-image.png')] bg-cover bg-center text-white relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-[#171717]/70 before:z-0">
+    <section className="mt-20 flex flex-col items-center pt-10 relative overflow-hidden bg-[#171717] text-white">
+      {/* Particles background */}
+      <div className="absolute inset-0 bg-[#171717] z-0">
+        <ParticlesBackground />
+      </div>
+      
       <div className="relative z-10 h-[153px] w-[1096px] max-md:px-5 max-md:py-0 max-md:w-full">
         <motion.div 
           className="text-9xl font-bold text-white uppercase text-center tracking-[10px]"
