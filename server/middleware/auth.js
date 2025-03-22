@@ -23,9 +23,9 @@ export const adminOnly = (req, res, next) => {
   next();
 };
 
-export const studentOnly = (req, res, next) => {
-  if (req.user.role !== 'student') {
-    return res.status(403).json({ message: 'Student access required' });
+export const regularOnly = (req, res, next) => {
+  if (req.user.role !== 'regular') {
+    return res.status(403).json({ message: 'Regular access required' });
   }
   next();
 }; 

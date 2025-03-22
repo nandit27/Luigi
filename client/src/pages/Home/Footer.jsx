@@ -92,7 +92,7 @@ const Footer = () => {
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 LUIGI. All rights reserved. Dedicated to supporting student projects.
+              © 2025 LUIGI. All rights reserved. Dedicated to supporting student projects.
             </p>
             <div className="flex space-x-6">
               <Link to="/terms" className="text-gray-400 hover:text-[#32CD32] text-sm transition-colors duration-300">

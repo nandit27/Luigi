@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GoogleLogin } from '@react-oauth/google';
 import { useAuth } from '../../context/AuthContext';
+import { getAnnouncements } from '../../services/api';
 
 const Navbar = () => {
+  const [announcements, setAnnouncements] = useState([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isAnnouncementOpen, setIsAnnouncementOpen] = useState(false);
@@ -40,6 +42,21 @@ const Navbar = () => {
     },
   ];
 
+  // Fetch announcements when the popup is opened
+  useEffect(() => {
+    if (isAnnouncementOpen) {
+      const fetchAnnouncements = async () => {
+        try {
+          const data = await getAnnouncements();
+          setAnnouncements(data);
+        } catch (error) {
+          console.error('Error fetching announcements:', error);
+        }
+      };
+      fetchAnnouncements();
+    }
+  }, [isAnnouncementOpen]);
+
   // Handle navbar background change on scroll
   useEffect(() => {
     const handleScroll = () => {
@@ -65,9 +82,6 @@ const Navbar = () => {
 
   const handleGoogleSuccess = async (credentialResponse) => {
     const success = await login(credentialResponse);
-    if (!success) {
-      alert('Only Charusat email addresses are allowed');
-    }
   };
 
   const handleGoogleError = () => {
@@ -88,7 +102,7 @@ const Navbar = () => {
             Logout
           </button>
           <Link 
-            to={user.email.endsWith('@charusat.edu.in') ? '/dashboard/student' : '/dashboard/admin'}
+            to={user.role === 'admin' ? '/dashboard/admin' : '/dashboard/regular'}
             className="relative group"
           >
             <img 
@@ -97,11 +111,6 @@ const Navbar = () => {
               className="w-10 h-10 rounded-full border-2 border-[#32CD32] transition-transform 
                 duration-300 group-hover:scale-110"
             />
-            <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 
-              opacity-0 group-hover:opacity-100 transition-opacity duration-300 
-              text-xs text-[#32CD32]">
-              Dashboard
-            </span>
           </Link>
         </div>
       );
@@ -206,7 +215,13 @@ const Navbar = () => {
                     </button>
                   </div>
                   <div className="text-gray-300">
-                    <p className="mb-2">No new announcements</p>
+                    {announcements.length > 0 ? (
+                      announcements.map((announcement) => (
+                        <p key={announcement._id} className="mb-2">{announcement.content}</p>
+                      ))
+                    ) : (
+                      <p className="mb-2">No new announcements</p>
+                    )}
                   </div>
                 </div>
               )}

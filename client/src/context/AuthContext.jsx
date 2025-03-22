@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const isAdmin = user?.role === 'admin';
-  const isStudent = user?.role === 'student';
+  const isRegular = user?.role === 'regular';
   const isAuthenticated = Boolean(user);
 
   const login = async (googleResponse) => {
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem('token');
     if (token) {
       // Verify token and get user data
-      fetch('/api/auth/verify', {
+      fetch('http://localhost:5001/api/auth/verify', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -67,7 +67,7 @@ export const AuthProvider = ({ children }) => {
       login, 
       logout, 
       isAdmin,
-      isStudent, 
+      isRegular, 
       isAuthenticated,
       loading 
     }}>

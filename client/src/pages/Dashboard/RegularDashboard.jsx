@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { getDownloadedDatasets, getAnnouncements } from '../../services/api';
 
-const StudentDashboard = () => {
+const RegularDashboard = () => {
   const { user } = useAuth();
   const [downloadedDatasets, setDownloadedDatasets] = useState([]);
   const [announcements, setAnnouncements] = useState([]);
@@ -29,7 +29,7 @@ const StudentDashboard = () => {
 
   return (
     <div className="min-h-screen bg-[#171717] pt-[80px] px-4">
-      <div className="max-w-7xl mx-auto">
+      <div className="mt-20 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Profile Section */}
           <div className="bg-white/5 rounded-lg p-6 backdrop-blur-sm border border-white/10">
@@ -90,4 +90,4 @@ const StudentDashboard = () => {
   );
 };
 
-export default StudentDashboard; 
+export default RegularDashboard; 

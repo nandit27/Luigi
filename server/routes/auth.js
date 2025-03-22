@@ -3,6 +3,7 @@ import { OAuth2Client } from 'google-auth-library';
 import jwt from 'jsonwebtoken';
 import { authMiddleware } from '../middleware/auth.js';
 import User from '../models/User.js';
+import fs from 'fs/promises';
 
 const router = express.Router();
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
@@ -20,15 +21,14 @@ router.post('/google', async (req, res) => {
     const payload = ticket.getPayload();
     const { email, name, picture } = payload;
 
-    if(!email.endsWith("@charusat.edu.in") && !email.endsWith("@charusat.ac.in")){
-        return res.status(403).json({ message: 'Invalid email domain' });
-    }
-
-    console.log(payload);
-
-
-    // Determine role based on email domain
-    const role = email.endsWith('@charusat.edu.in') ? 'student' : 'admin';
+    // Read admins.json file
+    const adminsData = await fs.readFile("./routes/admins.json", 'utf-8');
+    const admins = JSON.parse(adminsData).admins;
+    
+    // Determine role based on email
+    const role = admins.includes(email) ? 'admin' : 'regular';
+    
+    console.log(name, " Logged in as ", role);
 
     // Find or create user
     let user = await User.findOne({ email });
@@ -78,4 +78,4 @@ router.get('/verify', authMiddleware, (req, res) => {
   res.json({ user: req.user });
 });
 
-export default router; 
+export default router;

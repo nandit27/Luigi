@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema({
   picture: String,
   role: {
     type: String,
-    enum: ['student', 'admin'],
+    enum: ['regular', 'admin'],
     required: true
   },
   downloadedDatasets: [downloadedDatasetSchema],

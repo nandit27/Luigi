@@ -7,7 +7,7 @@ import Datasets from "./pages/Datasets/Datasets";
 import Details from "./pages/Details/Details";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { AuthProvider } from './context/AuthContext';
-import StudentDashboard from './pages/Dashboard/StudentDashboard';
+import RegularDashboard from './pages/Dashboard/RegularDashboard';
 import AdminDashboard from './pages/Dashboard/AdminDashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -43,10 +43,10 @@ const App = () => {
             <Route path="/datasets" element={<Datasets />} />
             <Route path="/details/:id" element={<Details />} />
             <Route 
-              path="/dashboard/student" 
+              path="/dashboard/regular" 
               element={
-                <ProtectedRoute allowedRoles={['student']}>
-                  <StudentDashboard />
+                <ProtectedRoute allowedRoles={['regular']}>
+                  <RegularDashboard />
                 </ProtectedRoute>
               } 
             />
