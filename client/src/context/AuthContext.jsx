@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (googleResponse) => {
     try {
-      const response = await fetch('http://localhost:5001/api/auth/google', {
+      const response = await fetch('http://localhost:5101/api/auth/google', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem('token');
     if (token) {
       // Verify token and get user data
-      fetch('http://localhost:5001/api/auth/verify', {
+      fetch('http://localhost:5101/api/auth/verify', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
